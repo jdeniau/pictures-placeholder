@@ -2,98 +2,33 @@
 
 namespace Jdeniau\PlaceholderPictureBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Silex\Application;
+use Silex\ControllerProviderInterface;
 
-use Jdeniau\PlaceholderPictureBundle\Http\ImagickResponse;
-
-class DefaultController
+class DefaultController implements ControllerProviderInterface
 {
     /**
-     * @Route("/")
-     * @Template()
-     */
-    public function indexAction()
-    {
-        return [];
-    }
-
-    /**
-     * imageAction
+     * parameters
      *
-     * @param int $width
-     * @param int $height
-     * @access public
-     * @return void
-     *
-     * @Route("/{width}/{height}")
-     */
-    public function imageAction($width, $height)
-    {
-        $path = $this->getPath();
-
-        $imagick = $this->getImage($path, $width, $height);
-
-        return new ImagickResponse($imagick, getimagesize($path)['mime']);
-    }
-
-    /**
-     * grayscaleImageAction
-     *
-     * @param int $width
-     * @param int $height
-     * @access public
-     * @return void
-     *
-     * @Route("/g/{width}/{height}")
-     */
-    public function grayscaleImageAction($width, $height)
-    {
-        $path = $this->getPath();
-
-        $imagick = $this->getImage($path, $width, $height);
-        $imagick->setImageColorspace(\Imagick::COLORSPACE_GRAY);
-
-        return new ImagickResponse($imagick, getimagesize($path)['mime']);
-    }
-
-
-    /**
-     * getImage
-     *
-     * @param string $path
-     * @param int $with
-     * @param int $height
+     * @var array
      * @access private
-     * @return \Imagick
      */
-    private function getImage($path, $width, $height)
-    {
-        $crop = new \stojg\crop\CropEntropy($path);
-        $imagick = $crop->resizeAndCrop($width, $height);
-
-        return $imagick;
-    }
+    private $parameters;
 
     /**
-     * getPath
-     *
-     * @access private
-     * @return string
+     * @InheritedDoc
      */
-    private function getPath()
+    public function connect(Application $app)
     {
-        $dir = '/home/j_deniau/hedgehogs/';
+        $controllers = $app['controllers_factory'];
 
-        $files = scandir($dir);
+        $this->parameters = $app['parameters'];
 
-        $candidates = [];
-        foreach ($files as $file) {
-            if (in_array(pathinfo($dir . $file, PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png'])) {
-                $candidates[] = $file;
-            }
-        }
+        $controller = $this;
+        $controllers->get('/', function (Application $app) use ($controller) {
+            return $app['twig']->render('index.html.twig');
+        });
 
-        return $dir . $candidates[array_rand($candidates)];
+        return $controllers;
     }
 }

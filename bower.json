@@ -1,0 +1,23 @@
+{
+  "name": "jdeniau/placeholder-pictures",
+  "version": "1.0.0",
+  "homepage": "https://github.com/jdeniau/placeholder-pictures",
+  "authors": [
+    "Julien Deniau <julien.deniau@gmail.com>"
+  ],
+  "description": "Open-source placeholder image version inspired by placekitten.com",
+  "keywords": [
+    "placeholder",
+    "pictures",
+    "placekitten"
+  ],
+  "license": "Apache2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "bower_components"
+  ],
+  "dependencies": {
+      "normalize-css": "latest"
+  }
+}

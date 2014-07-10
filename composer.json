@@ -1,13 +1,16 @@
 {
-    "name": "symfony/framework-standard-edition",
-    "license": "MIT",
+    "name": "jdeniau/placeholder-pictures",
+    "license": "Apache2",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
+    "description": "Open-source placeholder image version inspired by placekitten.com",
     "autoload": {
         "psr-0": { "": "src/" }
     },
     "require": {
         "silex/silex": "1.2.*",
+        "igorw/config-service-provider": "@stable",
+        "symfony/yaml": "@stable",
+        "twig/twig": ">=1.8,<2.0-dev",
 
         "stojg/crop": "1.*"
     },

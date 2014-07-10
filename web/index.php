@@ -5,17 +5,26 @@ require_once __DIR__.'/../vendor/autoload.php';
 use Jdeniau\PlaceholderPictureBundle\Controller\DefaultController;
 
 $app = new Silex\Application();
+$app['debug'] = true;
 
-// ... definitions
+// register providers
+$app->register(
+    new Silex\Provider\TwigServiceProvider,
+    [
+        'twig.path' => __DIR__ . '/../app/views',
+    ]
+);
+$app->register(
+    new Igorw\Silex\ConfigServiceProvider(
+        __DIR__ . '/../app/config/parameters.yml',
+        array('root_dir' => __DIR__ . '/..')
+    )
+);
+$app->register(
+    new Igorw\Silex\ConfigServiceProvider(
+        __DIR__ . '/../app/config/copyrights.json'
+    )
+);
 
-$app->get('/{width}/{height}', function (Silex\Application $app, $width, $height) {
-    $controller = new DefaultController;
-    return $controller->imageAction($width, $height);
-});
-
-$app->get('/g/{width}/{height}', function (Silex\Application $app, $width, $height) {
-    $controller = new DefaultController;
-    return $controller->grayscaleImageAction($width, $height);
-});
-
+$app->mount('/', new DefaultController);
 $app->run();
