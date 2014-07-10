@@ -2,13 +2,12 @@
 
 namespace Jdeniau\PlaceholderPictureBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Jdeniau\PlaceholderPictureBundle\Http\ImagickResponse;
 
-class DefaultController extends Controller
+class DefaultController
 {
     /**
      * @Route("/")
@@ -39,7 +38,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * greyscaleImageAction
+     * grayscaleImageAction
      *
      * @param int $width
      * @param int $height
@@ -48,7 +47,7 @@ class DefaultController extends Controller
      *
      * @Route("/g/{width}/{height}")
      */
-    public function greyscaleImageAction($width, $height)
+    public function grayscaleImageAction($width, $height)
     {
         $path = $this->getPath();
 

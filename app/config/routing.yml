@@ -1,5 +1,0 @@
-jdeniau_placeholder_picture:
-    resource: "@JdeniauPlaceholderPictureBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
