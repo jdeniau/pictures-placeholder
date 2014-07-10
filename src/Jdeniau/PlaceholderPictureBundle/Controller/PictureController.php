@@ -27,12 +27,21 @@ class PictureController implements ControllerProviderInterface
         $this->parameters = $app['parameters'];
 
         $controller = $this;
+
         $controllers->get('/{width}/{height}', function (Application $app, $width, $height) use ($controller) {
             return $controller->imageAction($width, $height);
         });
 
         $controllers->get('/g/{width}/{height}', function (Application $app, $width, $height) use ($controller) {
             return $controller->grayscaleImageAction($width, $height);
+        });
+
+        $controllers->get('/{nb}/g/{width}/{height}', function (Application $app, $width, $height, $nb) use ($controller) {
+            return $controller->grayscaleImageAction($width, $height, $nb);
+        });
+
+        $controllers->get('/{nb}/{width}/{height}', function (Application $app, $width, $height, $nb) use ($controller) {
+            return $controller->imageAction($width, $height, $nb);
         });
 
         return $controllers;
@@ -43,12 +52,13 @@ class PictureController implements ControllerProviderInterface
      *
      * @param int $width
      * @param int $height
+     * @param int|null $nb
      * @access public
      * @return void
      */
-    public function imageAction($width, $height)
+    public function imageAction($width, $height, $nb = null)
     {
-        $path = $this->getPath();
+        $path = $this->getPath($nb);
 
         $imagick = $this->getImage($path, $width, $height);
 
@@ -63,9 +73,9 @@ class PictureController implements ControllerProviderInterface
      * @access public
      * @return void
      */
-    public function grayscaleImageAction($width, $height)
+    public function grayscaleImageAction($width, $height, $nb = null)
     {
-        $path = $this->getPath();
+        $path = $this->getPath($nb);
 
         $imagick = $this->getImage($path, $width, $height);
         $imagick->setImageColorspace(\Imagick::COLORSPACE_GRAY);
@@ -94,10 +104,12 @@ class PictureController implements ControllerProviderInterface
     /**
      * getPath
      *
+     * $param int|null $nb
+     *
      * @access private
      * @return string
      */
-    private function getPath()
+    private function getPath($nb = null)
     {
         $dir = $this->parameters['picture_dir'];
 
@@ -111,6 +123,7 @@ class PictureController implements ControllerProviderInterface
             }
         }
 
-        return $dir . $candidates[array_rand($candidates)];
+        $nb = $nb ?: array_rand($candidates);
+        return $dir . $candidates[$nb];
     }
 }

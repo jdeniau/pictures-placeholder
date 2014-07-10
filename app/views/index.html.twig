@@ -1,1 +1,103 @@
-io
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{placehogs}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
+
+        <link rel="stylesheet" href="/assets/normalize-css/normalize.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/placehogs.css">
+    </head>
+    <body>
+        {% set host = 'placehogs.sitioweb.fr' %}
+
+
+        <div class="container">
+            <div class="row">
+                {# left half #}
+                <div class="col-md-6">
+                    <div>
+                        <h1>placehogs</h1>
+                        <h2>
+                            because kittens are outdated
+                        </h2>
+                        <p>
+                            <strong>A quick and simple service for getting pictures of hedgehogs for use as placeholders in your designs or code.</strong>
+                            Just put your image size (width & height) after our URL and you'll get a placeholder.
+                        </p>
+
+                        <div class="code">
+                            <p>
+                                <strong>Like this:</strong>
+                                <a href="http://placehogs.com/400/300">
+                                    http://placehogs.com/400/300
+                                </a>
+                            </p>
+                            <p>
+                                <strong>or:</strong>
+                                <a href="http://placehogs.com/g/400/300">
+                                    http://placehogs.com/g/400/300
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <img src="//{{ host }}/1/g/555/343" />
+                </div>
+
+                {# right half #}
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="//{{ host }}/2/g/262/320" />
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <img class="col-md-12" src="//{{ host }}/8/g/262/152" />
+                            </div>
+                            <div class="row">
+                                <img class="col-md-12" src="//{{ host }}/4/g/262/152" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <img class="col-md-6" src="//{{ host }}/11/g/116/160" />
+                                <img class="col-md-6" src="//{{ host }}/6/g/116/160" />
+                            </div>
+
+                            <div class="row">
+                                <img class="col-md-12" src="//{{ host }}/7/g/262/152" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <img class="col-md-12" src="//{{ host }}/9/g/262/320" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if google_analytics.enable %}
+            <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+            <script>
+                (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+                })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+                ga('create', '{{ google_analytics.id }}', 'auto');
+                ga('send', 'pageview');
+            </script>
+        {% endif %}
+    </body>
+</html>

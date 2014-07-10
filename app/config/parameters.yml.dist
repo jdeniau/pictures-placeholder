@@ -1,0 +1,6 @@
+parameters:
+    picture_dir: '%root_dir%/var/pictures/'
+    google_analytics:
+        enable: true
+        id: 'UA-XXXXXXX-X'
+

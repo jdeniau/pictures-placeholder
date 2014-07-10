@@ -1,0 +1,31 @@
+body {
+    padding-top: 30px;
+}
+
+h1 {
+    color: #999;
+    font: normal normal 5em Baskerville, Palatino, "Book Antiqua", serif;
+}
+
+h2 {
+    color: #999;
+    font-family: Baskerville, Palatino, "Book Antiqua", serif;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.code {
+    background: #444;
+    padding: 15px 15px 5px;
+    font-family: monospace, arial;
+    color: #fff;
+    margin-bottom: 15px;
+}
+.code a {
+    color: #c9e2ba;
+}
+.code a:hover {
+    color: #fff;
+}

@@ -3,6 +3,7 @@
 require_once __DIR__.'/../vendor/autoload.php';
 
 use Jdeniau\PlaceholderPictureBundle\Controller\DefaultController;
+use Jdeniau\PlaceholderPictureBundle\Controller\PictureController;
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -27,4 +28,5 @@ $app->register(
 );
 
 $app->mount('/', new DefaultController);
+$app->mount('/', new PictureController);
 $app->run();
