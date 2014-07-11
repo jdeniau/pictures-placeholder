@@ -3,7 +3,7 @@ Pictures placeholder
 
 Example website: [placehogs.com](http://placehogs.com)
 
-Open-source pictures placeholder version inspired by [placekitten](placekitten.com)
+Open-source pictures placeholder version inspired by [placekitten](http://placekitten.com)
 
 
 ## Copyrights
