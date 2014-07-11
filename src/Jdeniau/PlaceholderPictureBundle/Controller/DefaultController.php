@@ -16,7 +16,7 @@ class DefaultController implements ControllerProviderInterface
     private $parameters;
 
     /**
-     * @InheritedDoc
+     * {@inheritdoc}
      */
     public function connect(Application $app)
     {

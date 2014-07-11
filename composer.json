@@ -1,6 +1,6 @@
 {
     "name": "jdeniau/placeholder-pictures",
-    "license": "Apache2",
+    "license": "Apache-2.0",
     "type": "project",
     "description": "Open-source placeholder image version inspired by placekitten.com",
     "autoload": {
@@ -8,8 +8,8 @@
     },
     "require": {
         "silex/silex": "1.2.*",
-        "igorw/config-service-provider": "@stable",
-        "symfony/yaml": "@stable",
+        "igorw/config-service-provider": "1.*",
+        "symfony/yaml": "2.*",
         "twig/twig": ">=1.8,<2.0-dev",
 
         "stojg/crop": "1.*"

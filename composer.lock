@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "26cd6ef2dda4c48d5c90284e1887d03e",
+    "hash": "ee372f61417994eff95ea45bcf8ff527",
     "packages": [
         {
             "name": "igorw/config-service-provider",
@@ -1211,8 +1211,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "igorw/config-service-provider": 0,
-        "symfony/yaml": 0,
         "raulfraile/ladybug": 0
     },
     "platform": [
