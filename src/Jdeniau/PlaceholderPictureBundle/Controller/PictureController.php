@@ -141,18 +141,6 @@ class PictureController implements ControllerProviderInterface
     }
 
     /**
-     * writeImage
-     *
-     * @param \Imagick $imagick
-     * @access private
-     * @return void
-     */
-    private function writeImage(\Imagick $imagick)
-    {
-        $image->writeImage();
-    }
-
-    /**
      * getFinalPath
      *
      * @param int $width
