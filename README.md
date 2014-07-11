@@ -11,4 +11,4 @@ All images come from the Creative Common stock of [flickr](https://www.flickr.co
 
 
 ## Awards !! o/
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/35f1e275-5445-401e-9373-9c35f62a4630/big.png)](https://insight.sensiolabs.com/projects/35f1e275-5445-401e-9373-9c35f62a4630)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d63fc577-f395-49d5-9a4d-ba54f0c02a27/big.png)](https://insight.sensiolabs.com/projects/d63fc577-f395-49d5-9a4d-ba54f0c02a27)
