@@ -1,9 +1,9 @@
-Placeholder pictures
+Pictures placeholder
 ====================
 
 Example website: [placehogs.com](http://placehogs.com)
 
-Open-source placeholder image version inspired by [placekitten](placekitten.com)
+Open-source pictures placeholder version inspired by [placekitten](placekitten.com)
 
 
 ## Copyrights
