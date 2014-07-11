@@ -78,7 +78,8 @@ class PictureController implements ControllerProviderInterface
         $path = $this->getPath($nb);
 
         $imagick = $this->getImage($path, $width, $height);
-        $imagick->setImageColorspace(\Imagick::COLORSPACE_GRAY);
+        //$imagick->setImageColorspace(\Imagick::COLORSPACE_GRAY);
+        $imagick->modulateimage(100, 0, 100);
 
         return new ImagickResponse($imagick, getimagesize($path)['mime']);
     }
