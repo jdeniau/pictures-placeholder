@@ -4,6 +4,7 @@ namespace Jdeniau\PlaceholderPictureBundle\Controller;
 
 use Silex\Application;
 use Silex\ControllerProviderInterface;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 use Jdeniau\PlaceholderPictureBundle\Http\ImagickResponse;
 
@@ -58,9 +59,15 @@ class PictureController implements ControllerProviderInterface
      */
     public function imageAction($width, $height, $nb = null)
     {
+        $writePath = $this->getFinalPath($width, $height, $nb);
+        if (file_exists($writePath)) {
+            return new BinaryFileResponse($writePath);
+        }
+
         $path = $this->getPath($nb);
 
         $imagick = $this->getImage($path, $width, $height);
+        $imagick->writeImage($writePath);
 
         return new ImagickResponse($imagick, getimagesize($path)['mime']);
     }
@@ -75,11 +82,17 @@ class PictureController implements ControllerProviderInterface
      */
     public function grayscaleImageAction($width, $height, $nb = null)
     {
+        $writePath = $this->getFinalPath($width, $height, $nb, true);
+        if (file_exists($writePath)) {
+            return new BinaryFileResponse($writePath);
+        }
+
         $path = $this->getPath($nb);
 
         $imagick = $this->getImage($path, $width, $height);
         //$imagick->setImageColorspace(\Imagick::COLORSPACE_GRAY);
         $imagick->modulateimage(100, 0, 100);
+        $imagick->writeImage($writePath);
 
         return new ImagickResponse($imagick, getimagesize($path)['mime']);
     }
@@ -114,7 +127,6 @@ class PictureController implements ControllerProviderInterface
     {
         $dir = $this->parameters['picture_dir'];
 
-
         $files = scandir($dir);
 
         $candidates = [];
@@ -126,5 +138,44 @@ class PictureController implements ControllerProviderInterface
 
         $nb = $nb ?: array_rand($candidates);
         return $dir . $candidates[$nb];
+    }
+
+    /**
+     * writeImage
+     *
+     * @param \Imagick $imagick
+     * @access private
+     * @return void
+     */
+    private function writeImage(\Imagick $imagick)
+    {
+        $image->writeImage();
+    }
+
+    /**
+     * getFinalPath
+     *
+     * @param int $width
+     * @param int $height
+     * @param boolean $grayscale
+     * @param int $nb
+     * @access private
+     * @return string
+     */
+    private function getFinalPath($width, $height, $nb = null, $grayscale = false)
+    {
+        $dir = $this->parameters['picture_cache_dir'];
+
+        $filename = date('Ymd.');
+        if ($nb) {
+            $filename .= $nb . '.';
+        }
+        $filename .= $width . '-' . $height;
+
+        if  ($grayscale) {
+            $filename .= '.bw';
+        }
+
+        return $dir . $filename;
     }
 }

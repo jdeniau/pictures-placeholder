@@ -1,4 +1,5 @@
 parameters:
+    picture_cache_dir: '%root_dir%/var/cache/'
     picture_dir: '%root_dir%/var/pictures/'
     google_analytics:
         enable: true
