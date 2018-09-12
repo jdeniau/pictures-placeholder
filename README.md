@@ -1,7 +1,7 @@
 Pictures placeholder
 ====================
 
-Example website: [placehogs.com](http://placehogs.com)
+Example website: [placehogs.deniau.me](http://placehogs.deniau.me)
 
 Open-source pictures placeholder version inspired by [placekitten](http://placekitten.com)
 
